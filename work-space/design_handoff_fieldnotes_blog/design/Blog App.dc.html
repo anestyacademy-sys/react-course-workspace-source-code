@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #0B0A1A; }
+  a { color: #C4B5FD; }
+  a:hover { color: #F0ABFC; }
+  ::selection { background: #7C5CFF; color: #fff; }
+  ::placeholder { color: rgba(236,233,255,0.34); }
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #0B0A1A; color: #ECE9FF; font-family: 'Plus Jakarta Sans', sans-serif; display: flex; flex-direction: column; overflow-x: hidden;">
+
+  <header style="position: sticky; top: 0; z-index: 30; background: rgba(11,10,26,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.07);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px;">
+      <a href="#" onClick="{{ goHome }}" style="display: flex; align-items: center; gap: 11px; text-decoration: none; color: #ECE9FF;">
+        <span style="width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg, #7C5CFF, #EC4899); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: #fff; box-shadow: 0 6px 20px rgba(124,92,255,0.45);">F</span>
+        <span style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em;">fieldnotes</span>
+      </a>
+      <nav style="display: flex; gap: 8px; align-items: center;">
+        <a href="#" onClick="{{ goHome }}" style="font-size: 14px; font-weight: 500; text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: all 160ms; color: {{ homeColor }}; background: {{ homeBg }};" style-hover="color: #ECE9FF">Home</a>
+        <a href="#" onClick="{{ goList }}" style="font-size: 14px; font-weight: 500; text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: all 160ms; color: {{ listColor }}; background: {{ listBg }};" style-hover="color: #ECE9FF">Articles</a>
+        <a href="#" onClick="{{ goAbout }}" style="font-size: 14px; font-weight: 500; text-decoration: none; padding: 9px 16px; border-radius: 999px; transition: all 160ms; color: {{ aboutColor }}; background: {{ aboutBg }};" style-hover="color: #ECE9FF">About</a>
+        <a href="#" onClick="{{ goContact }}" style="margin-left: 8px; font-size: 14px; font-weight: 600; text-decoration: none; padding: 11px 22px; border-radius: 999px; color: #fff; background: linear-gradient(135deg, #7C5CFF, #EC4899); box-shadow: 0 8px 24px rgba(124,92,255,0.4); transition: transform 160ms;" style-hover="transform: translateY(-2px)">Contact us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="flex: 1;">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <section style="position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -260px; left: 50%; transform: translateX(-50%); width: 900px; height: 620px; background: radial-gradient(ellipse at center, rgba(124,92,255,0.34) 0%, rgba(236,72,153,0.16) 42%, rgba(11,10,26,0) 72%); pointer-events: none;"></div>
+          <div style="position: relative; max-width: 1160px; margin: 0 auto; padding: 92px 40px 64px; text-align: center;">
+            <div style="display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px 7px 8px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(236,233,255,0.8);">
+              <span style="padding: 3px 10px; border-radius: 999px; background: linear-gradient(135deg, #7C5CFF, #EC4899); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff;">New</span>
+              A personal blog about learning to build
+            </div>
+            <h1 style="margin: 28px auto 24px; max-width: 18ch; font-family: 'Sora', sans-serif; font-size: 68px; line-height: 1.06; font-weight: 700; letter-spacing: -0.035em; text-wrap: pretty;">Notes on building things <span style="background: linear-gradient(100deg, #A78BFA, #EC4899 55%, #FB923C); -webkit-background-clip: text; background-clip: text; color: transparent;">slowly</span></h1>
+            <p style="margin: 0 auto 36px; max-width: 58ch; font-size: 19px; line-height: 1.7; color: rgba(236,233,255,0.66);">I write about learning in public — mostly code, sometimes the quieter parts of making software. New posts land most weeks, and none of them are finished.</p>
+            <div style="display: flex; gap: 14px; justify-content: center;">
+              <a href="#" onClick="{{ goList }}" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 15px 30px; border-radius: 999px; color: #fff; background: linear-gradient(135deg, #7C5CFF, #EC4899); box-shadow: 0 12px 34px rgba(124,92,255,0.42); transition: transform 160ms;" style-hover="transform: translateY(-2px)">Start reading →</a>
+              <a href="#" onClick="{{ goAbout }}" style="font-size: 15px; font-weight: 600; text-decoration: none; padding: 15px 30px; border-radius: 999px; color: #ECE9FF; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); transition: background 160ms;" style-hover="background: rgba(255,255,255,0.11)">Who writes this</a>
+            </div>
+          </div>
+          <div style="position: relative; max-width: 1160px; margin: 0 auto; padding: 0 40px;">
+            <div style="border-radius: 22px 22px 0 0; padding: 1px 1px 0; background: linear-gradient(135deg, rgba(124,92,255,0.7), rgba(236,72,153,0.45) 50%, rgba(251,146,60,0.3));">
+              <div style="border-radius: 21px 21px 0 0; background: #13112A; padding: 14px 16px 0;">
+                <div style="display: flex; gap: 7px; padding-bottom: 12px;">
+                  <span style="width: 11px; height: 11px; border-radius: 50%; background: #F87171;"></span>
+                  <span style="width: 11px; height: 11px; border-radius: 50%; background: #FBBF24;"></span>
+                  <span style="width: 11px; height: 11px; border-radius: 50%; background: #34D399;"></span>
+                </div>
+                <div style="height: 210px; border-radius: 14px 14px 0 0; background: linear-gradient(180deg, #1B1738, #13112A); border: 1px solid rgba(255,255,255,0.07); border-bottom: none; display: flex; align-items: center; justify-content: center;">
+                  <p style="margin: 0; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(236,233,255,0.3);">Screenshot / cover image</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 0; background: linear-gradient(90deg, #7C5CFF, #EC4899 45%, #FB923C); padding: 11px 0;">
+            <div style="max-width: 1160px; margin: 0 auto; padding: 0 40px; display: flex; gap: 34px; justify-content: center; flex-wrap: wrap; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: rgba(255,255,255,0.92);">
+              <span>React</span><span>Hooks</span><span>State</span><span>CSS</span><span>Tooling</span><span>Testing</span><span>Design systems</span><span>Career</span>
+            </div>
+          </div>
+        </section>
+
+        <section style="max-width: 1160px; margin: 0 auto; padding: 76px 40px 20px;">
+          <a href="#" onClick="{{ lead.open }}" style="display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: 40px; align-items: center; text-decoration: none; color: #ECE9FF; padding: 26px; border-radius: 24px; background: #15122B; border: 1px solid rgba(255,255,255,0.08); transition: all 200ms;" style-hover="border-color: rgba(124,92,255,0.5); box-shadow: 0 20px 50px rgba(124,92,255,0.18)">
+            <div style="aspect-ratio: 16/10; border-radius: 16px; background: linear-gradient(140deg, #241C4A, #3A1B3D); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: flex-end; padding: 16px;">
+              <p style="margin: 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(236,233,255,0.34);">Cover image</p>
+            </div>
+            <div style="padding-right: 14px;">
+              <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                <span style="padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #7C5CFF, #EC4899);">Latest</span>
+                <span style="padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(236,233,255,0.7); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">{{ lead.tag }}</span>
+              </div>
+              <h2 style="margin: 0 0 14px; font-family: 'Sora', sans-serif; font-size: 36px; line-height: 1.16; font-weight: 600; letter-spacing: -0.025em; text-wrap: pretty;">{{ lead.title }}</h2>
+              <p style="margin: 0 0 22px; font-size: 17px; line-height: 1.65; color: rgba(236,233,255,0.64);">{{ lead.excerpt }}</p>
+              <p style="margin: 0; font-size: 14px; color: rgba(236,233,255,0.45);">{{ lead.date }} · {{ lead.read }} read</p>
+            </div>
+          </a>
+        </section>
+
+        <section style="max-width: 1160px; margin: 0 auto; padding: 44px 40px 92px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;">
+            <h2 style="margin: 0; font-family: 'Sora', sans-serif; font-size: 27px; font-weight: 600; letter-spacing: -0.02em;">More from the blog</h2>
+            <a href="#" onClick="{{ goList }}" style="font-size: 14px; font-weight: 600; text-decoration: none; color: #C4B5FD;">See all articles →</a>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px;">
+            <sc-for list="{{ featured }}" as="post" hint-placeholder-count="3">
+              <a href="#" onClick="{{ post.open }}" style="text-decoration: none; color: #ECE9FF; display: flex; flex-direction: column; border-radius: 20px; background: #15122B; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: all 200ms;" style-hover="transform: translateY(-5px); border-color: rgba(236,72,153,0.45); box-shadow: 0 18px 44px rgba(236,72,153,0.16)">
+                <div style="aspect-ratio: 16/9; background: linear-gradient(140deg, #221B45, #35203F); border-bottom: 1px solid rgba(255,255,255,0.07);"></div>
+                <div style="padding: 20px 22px 24px;">
+                  <span style="display: inline-block; margin-bottom: 13px; padding: 5px 11px; border-radius: 999px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C4B5FD; background: rgba(124,92,255,0.16); border: 1px solid rgba(124,92,255,0.3);">{{ post.tag }}</span>
+                  <h3 style="margin: 0 0 10px; font-family: 'Sora', sans-serif; font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.015em;">{{ post.title }}</h3>
+                  <p style="margin: 0 0 18px; font-size: 14px; line-height: 1.62; color: rgba(236,233,255,0.6);">{{ post.excerpt }}</p>
+                  <p style="margin: 0; font-size: 12px; color: rgba(236,233,255,0.4);">{{ post.date }} · {{ post.read }}</p>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+      <section style="position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -280px; left: 50%; transform: translateX(-50%); width: 820px; height: 560px; background: radial-gradient(ellipse at center, rgba(124,92,255,0.26) 0%, rgba(11,10,26,0) 70%); pointer-events: none;"></div>
+        <div style="position: relative; max-width: 1160px; margin: 0 auto; padding: 76px 40px 96px;">
+          <div style="text-align: center; margin-bottom: 48px;">
+            <p style="margin: 0 0 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #C4B5FD;">The archive</p>
+            <h1 style="margin: 0 auto 16px; max-width: 20ch; font-family: 'Sora', sans-serif; font-size: 54px; line-height: 1.08; font-weight: 700; letter-spacing: -0.035em;">Everything I've <span style="background: linear-gradient(100deg, #A78BFA, #EC4899 60%, #FB923C); -webkit-background-clip: text; background-clip: text; color: transparent;">written</span></h1>
+            <p style="margin: 0; font-size: 16px; color: rgba(236,233,255,0.55);">{{ count }} posts, oldest at the bottom</p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px;">
+            <sc-for list="{{ posts }}" as="post" hint-placeholder-count="6">
+              <a href="#" onClick="{{ post.open }}" style="text-decoration: none; color: #ECE9FF; display: flex; flex-direction: column; border-radius: 20px; background: #15122B; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; transition: all 200ms;" style-hover="transform: translateY(-5px); border-color: rgba(124,92,255,0.5); box-shadow: 0 18px 44px rgba(124,92,255,0.16)">
+                <div style="aspect-ratio: 16/9; background: linear-gradient(140deg, #241C4A, #3A1B3D); border-bottom: 1px solid rgba(255,255,255,0.07);"></div>
+                <div style="padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1;">
+                  <span style="align-self: flex-start; margin-bottom: 13px; padding: 5px 11px; border-radius: 999px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C4B5FD; background: rgba(124,92,255,0.16); border: 1px solid rgba(124,92,255,0.3);">{{ post.tag }}</span>
+                  <h2 style="margin: 0 0 10px; font-family: 'Sora', sans-serif; font-size: 21px; line-height: 1.28; font-weight: 600; letter-spacing: -0.02em;">{{ post.title }}</h2>
+                  <p style="margin: 0 0 18px; font-size: 14px; line-height: 1.62; color: rgba(236,233,255,0.6);">{{ post.excerpt }}</p>
+                  <p style="margin: auto 0 0; font-size: 12px; color: rgba(236,233,255,0.4);">{{ post.date }} · {{ post.read }} read</p>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isPost }}" hint-placeholder-val="{{ false }}">
+      <article style="position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -300px; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; background: radial-gradient(ellipse at center, rgba(236,72,153,0.2) 0%, rgba(124,92,255,0.14) 40%, rgba(11,10,26,0) 72%); pointer-events: none;"></div>
+        <div style="position: relative; max-width: 800px; margin: 0 auto; padding: 44px 40px 0; text-align: center;">
+          <a href="#" onClick="{{ goList }}" style="display: inline-block; margin-bottom: 30px; font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 16px; border-radius: 999px; color: rgba(236,233,255,0.75); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);" style-hover="background: rgba(255,255,255,0.1)">← All articles</a>
+          <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 22px;">
+            <span style="padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, #7C5CFF, #EC4899);">{{ current.tag }}</span>
+            <span style="padding: 5px 12px; border-radius: 999px; font-size: 11px; font-weight: 600; color: rgba(236,233,255,0.7); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">{{ current.read }} read</span>
+          </div>
+          <h1 style="margin: 0 0 20px; font-family: 'Sora', sans-serif; font-size: 48px; line-height: 1.1; font-weight: 700; letter-spacing: -0.035em; text-wrap: pretty;">{{ current.title }}</h1>
+          <p style="margin: 0 0 32px; font-size: 19px; line-height: 1.7; color: rgba(236,233,255,0.64);">{{ current.excerpt }}</p>
+          <div style="display: flex; align-items: center; gap: 12px; justify-content: center; padding-bottom: 40px;">
+            <span style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #7C5CFF, #EC4899); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 600; color: #fff;">M</span>
+            <div style="text-align: left;">
+              <p style="margin: 0; font-size: 15px; font-weight: 600;">Mira Advani</p>
+              <p style="margin: 0; font-size: 13px; color: rgba(236,233,255,0.5);">{{ current.date }}</p>
+            </div>
+          </div>
+        </div>
+        <div style="position: relative; max-width: 1000px; margin: 0 auto; padding: 0 40px;">
+          <div style="aspect-ratio: 21/9; border-radius: 22px; background: linear-gradient(140deg, #241C4A, #3A1B3D); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;">
+            <p style="margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(236,233,255,0.3);">Hero image</p>
+          </div>
+        </div>
+        <div style="position: relative; max-width: 720px; margin: 0 auto; padding: 52px 40px 0;">
+          <p style="margin: 0 0 26px; font-size: 20px; line-height: 1.8; color: rgba(236,233,255,0.92);">{{ current.lede }}</p>
+          <sc-for list="{{ current.rest }}" as="para" hint-placeholder-count="3">
+            <p style="margin: 0 0 26px; font-size: 18px; line-height: 1.85; color: rgba(236,233,255,0.78);">{{ para }}</p>
+          </sc-for>
+          <div style="margin: 40px 0; padding: 28px 30px; border-radius: 20px; background: linear-gradient(135deg, rgba(124,92,255,0.16), rgba(236,72,153,0.12)); border: 1px solid rgba(124,92,255,0.3);">
+            <p style="margin: 0; font-family: 'Sora', sans-serif; font-size: 23px; line-height: 1.45; font-weight: 500; letter-spacing: -0.015em;">{{ current.quote }}</p>
+          </div>
+          <p style="margin: 0; font-size: 18px; line-height: 1.85; color: rgba(236,233,255,0.78);">{{ current.close }}</p>
+        </div>
+        <div style="position: relative; max-width: 1160px; margin: 0 auto; padding: 72px 40px 96px;">
+          <h2 style="margin: 0 0 24px; font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 600; letter-spacing: -0.02em;">Read next</h2>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px;">
+            <sc-for list="{{ nextUp }}" as="post" hint-placeholder-count="2">
+              <a href="#" onClick="{{ post.open }}" style="text-decoration: none; color: #ECE9FF; display: block; padding: 24px; border-radius: 20px; background: #15122B; border: 1px solid rgba(255,255,255,0.08); transition: all 200ms;" style-hover="transform: translateY(-4px); border-color: rgba(124,92,255,0.5)">
+                <span style="display: inline-block; margin-bottom: 12px; padding: 5px 11px; border-radius: 999px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C4B5FD; background: rgba(124,92,255,0.16); border: 1px solid rgba(124,92,255,0.3);">{{ post.tag }}</span>
+                <h3 style="margin: 0 0 9px; font-family: 'Sora', sans-serif; font-size: 21px; line-height: 1.28; font-weight: 600; letter-spacing: -0.02em;">{{ post.title }}</h3>
+                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(236,233,255,0.6);">{{ post.excerpt }}</p>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </article>
+    </sc-if>
+
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+      <section style="position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -260px; right: -120px; width: 760px; height: 540px; background: radial-gradient(ellipse at center, rgba(236,72,153,0.22) 0%, rgba(11,10,26,0) 70%); pointer-events: none;"></div>
+        <div style="position: relative; max-width: 1160px; margin: 0 auto; padding: 76px 40px 96px;">
+          <div style="display: grid; grid-template-columns: minmax(0,0.85fr) minmax(0,1.25fr); gap: 64px; align-items: start;">
+            <div style="padding: 1px; border-radius: 26px; background: linear-gradient(140deg, rgba(124,92,255,0.8), rgba(236,72,153,0.5) 55%, rgba(251,146,60,0.35));">
+              <div style="border-radius: 25px; overflow: hidden; background: #15122B;">
+                <div style="aspect-ratio: 4/5; background: linear-gradient(150deg, #241C4A, #3A1B3D); display: flex; align-items: center; justify-content: center;">
+                  <p style="margin: 0; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(236,233,255,0.34);">Portrait</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p style="margin: 0 0 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #C4B5FD;">About</p>
+              <h1 style="margin: 0 0 26px; font-family: 'Sora', sans-serif; font-size: 50px; line-height: 1.08; font-weight: 700; letter-spacing: -0.035em;">Hello, I'm <span style="background: linear-gradient(100deg, #A78BFA, #EC4899 60%, #FB923C); -webkit-background-clip: text; background-clip: text; color: transparent;">Mira</span></h1>
+              <p style="margin: 0 0 22px; font-size: 19px; line-height: 1.78; color: rgba(236,233,255,0.8);">I'm a front-end developer in Pune. I spend my days on design systems and my evenings rebuilding things I already understand, which is how I learn anything at all.</p>
+              <p style="margin: 0 0 40px; font-size: 19px; line-height: 1.78; color: rgba(236,233,255,0.8);">This blog is where those evenings end up: half-finished experiments, notes on the tools I use, and the occasional thing that actually worked.</p>
+              <div style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-bottom: 40px;">
+                <div style="padding: 22px 20px; border-radius: 18px; background: #15122B; border: 1px solid rgba(255,255,255,0.08);">
+                  <p style="margin: 0 0 6px; font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 700; background: linear-gradient(135deg, #A78BFA, #EC4899); -webkit-background-clip: text; background-clip: text; color: transparent;">7</p>
+                  <p style="margin: 0; font-size: 13px; color: rgba(236,233,255,0.6);">Years writing</p>
+                </div>
+                <div style="padding: 22px 20px; border-radius: 18px; background: #15122B; border: 1px solid rgba(255,255,255,0.08);">
+                  <p style="margin: 0 0 6px; font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 700; background: linear-gradient(135deg, #EC4899, #FB923C); -webkit-background-clip: text; background-clip: text; color: transparent;">142</p>
+                  <p style="margin: 0; font-size: 13px; color: rgba(236,233,255,0.6);">Posts published</p>
+                </div>
+                <div style="padding: 22px 20px; border-radius: 18px; background: #15122B; border: 1px solid rgba(255,255,255,0.08);">
+                  <p style="margin: 0 0 6px; font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 700; background: linear-gradient(135deg, #7C5CFF, #A78BFA); -webkit-background-clip: text; background-clip: text; color: transparent;">3.1k</p>
+                  <p style="margin: 0; font-size: 13px; color: rgba(236,233,255,0.6);">Readers a month</p>
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <span style="padding: 9px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; color: rgba(236,233,255,0.82); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">React</span>
+                <span style="padding: 9px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; color: rgba(236,233,255,0.82); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Design systems</span>
+                <span style="padding: 9px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; color: rgba(236,233,255,0.82); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">CSS</span>
+                <span style="padding: 9px 16px; border-radius: 999px; font-size: 13px; font-weight: 500; color: rgba(236,233,255,0.82); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Teaching</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+      <section style="position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -260px; left: 50%; transform: translateX(-50%); width: 860px; height: 560px; background: radial-gradient(ellipse at center, rgba(124,92,255,0.28) 0%, rgba(11,10,26,0) 70%); pointer-events: none;"></div>
+        <div style="position: relative; max-width: 1160px; margin: 0 auto; padding: 76px 40px 96px; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.05fr); gap: 60px; align-items: start;">
+          <div>
+            <p style="margin: 0 0 16px; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #C4B5FD;">Contact us</p>
+            <h1 style="margin: 0 0 24px; font-family: 'Sora', sans-serif; font-size: 50px; line-height: 1.08; font-weight: 700; letter-spacing: -0.035em;">Still have a <span style="background: linear-gradient(100deg, #A78BFA, #EC4899 60%, #FB923C); -webkit-background-clip: text; background-clip: text; color: transparent;">question?</span></h1>
+            <p style="margin: 0 0 36px; font-size: 19px; line-height: 1.75; max-width: 38ch; color: rgba(236,233,255,0.68);">Questions, corrections, or a post you'd like me to write — all welcome. I reply to everything eventually.</p>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-radius: 18px; background: #15122B; border: 1px solid rgba(255,255,255,0.08);">
+                <span style="width: 38px; height: 38px; border-radius: 12px; background: rgba(124,92,255,0.18); border: 1px solid rgba(124,92,255,0.34); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #C4B5FD;">@</span>
+                <div>
+                  <p style="margin: 0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236,233,255,0.45);">Email</p>
+                  <p style="margin: 0; font-size: 16px; font-weight: 500;">mira@fieldnotes.blog</p>
+                </div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-radius: 18px; background: #15122B; border: 1px solid rgba(255,255,255,0.08);">
+                <span style="width: 38px; height: 38px; border-radius: 12px; background: rgba(236,72,153,0.18); border: 1px solid rgba(236,72,153,0.34); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #F9A8D4;">◔</span>
+                <div>
+                  <p style="margin: 0; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(236,233,255,0.45);">Response time</p>
+                  <p style="margin: 0; font-size: 16px; font-weight: 500;">Within a week · Pune, India</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 1px; border-radius: 26px; background: linear-gradient(140deg, rgba(124,92,255,0.6), rgba(236,72,153,0.4) 55%, rgba(255,255,255,0.06));">
+            <div style="border-radius: 25px; background: #15122B; padding: 38px;">
+              <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+                <div style="padding: 30px 0; text-align: center;">
+                  <span style="display: inline-flex; width: 56px; height: 56px; border-radius: 50%; margin-bottom: 22px; background: linear-gradient(135deg, #7C5CFF, #EC4899); align-items: center; justify-content: center; font-size: 24px; color: #fff; box-shadow: 0 10px 30px rgba(124,92,255,0.45);">✓</span>
+                  <h2 style="margin: 0 0 14px; font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 600; letter-spacing: -0.02em;">Thanks — it's on its way.</h2>
+                  <p style="margin: 0 0 26px; font-size: 17px; line-height: 1.7; color: rgba(236,233,255,0.65);">I'll get back to you at the address you gave.</p>
+                  <a href="#" onClick="{{ reset }}" style="font-size: 14px; font-weight: 600; text-decoration: none; padding: 12px 24px; border-radius: 999px; color: #ECE9FF; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);" style-hover="background: rgba(255,255,255,0.12)">Send another</a>
+                </div>
+              </sc-if>
+              <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+                <form onSubmit="{{ submit }}" style="display: flex; flex-direction: column; gap: 20px;">
+                  <label style="display: flex; flex-direction: column; gap: 9px; font-size: 13px; font-weight: 600; color: rgba(236,233,255,0.8);">Name
+                    <input type="text" value="{{ name }}" onChange="{{ setName }}" placeholder="Your name" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; color: #ECE9FF; background: #0F0D22; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px 16px; outline: none; transition: border-color 160ms;" style-focus="border-color: #7C5CFF" />
+                  </label>
+                  <label style="display: flex; flex-direction: column; gap: 9px; font-size: 13px; font-weight: 600; color: rgba(236,233,255,0.8);">Email
+                    <input type="email" value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@example.com" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; color: #ECE9FF; background: #0F0D22; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px 16px; outline: none; transition: border-color 160ms;" style-focus="border-color: #7C5CFF" />
+                  </label>
+                  <label style="display: flex; flex-direction: column; gap: 9px; font-size: 13px; font-weight: 600; color: rgba(236,233,255,0.8);">Message
+                    <textarea rows="5" value="{{ message }}" onChange="{{ setMessage }}" placeholder="What's on your mind?" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; line-height: 1.6; color: #ECE9FF; background: #0F0D22; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px 16px; outline: none; resize: vertical; transition: border-color 160ms;" style-focus="border-color: #7C5CFF"></textarea>
+                  </label>
+                  <button type="submit" style="margin-top: 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; color: #fff; background: linear-gradient(135deg, #7C5CFF, #EC4899); border: none; border-radius: 999px; padding: 16px 30px; cursor: pointer; box-shadow: 0 12px 30px rgba(124,92,255,0.38); transition: transform 160ms;" style-hover="transform: translateY(-2px)">Send message</button>
+                </form>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <footer style="border-top: 1px solid rgba(255,255,255,0.08); background: #0D0B1E;">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 52px 40px 34px; display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr); gap: 52px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 11px; margin-bottom: 14px;">
+          <span style="width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(135deg, #7C5CFF, #EC4899); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; color: #fff;">F</span>
+          <span style="font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 600;">fieldnotes</span>
+        </div>
+        <p style="margin: 0; font-size: 15px; line-height: 1.65; max-width: 36ch; color: rgba(236,233,255,0.55);">A personal blog by Mira Advani. Written slowly, published anyway.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 11px;">
+        <p style="margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(236,233,255,0.4);">Pages</p>
+        <a href="#" onClick="{{ goHome }}" style="font-size: 15px; text-decoration: none; color: rgba(236,233,255,0.75);" style-hover="color: #ECE9FF">Home</a>
+        <a href="#" onClick="{{ goList }}" style="font-size: 15px; text-decoration: none; color: rgba(236,233,255,0.75);" style-hover="color: #ECE9FF">Articles</a>
+        <a href="#" onClick="{{ goAbout }}" style="font-size: 15px; text-decoration: none; color: rgba(236,233,255,0.75);" style-hover="color: #ECE9FF">About</a>
+        <a href="#" onClick="{{ goContact }}" style="font-size: 15px; text-decoration: none; color: rgba(236,233,255,0.75);" style-hover="color: #ECE9FF">Contact us</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 11px;">
+        <p style="margin: 0 0 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(236,233,255,0.4);">Elsewhere</p>
+        <p style="margin: 0; font-size: 15px; color: rgba(236,233,255,0.75);">GitHub</p>
+        <p style="margin: 0; font-size: 15px; color: rgba(236,233,255,0.75);">Bluesky</p>
+        <p style="margin: 0; font-size: 15px; color: rgba(236,233,255,0.75);">RSS</p>
+      </div>
+    </div>
+    <div style="max-width: 1160px; margin: 0 auto; padding: 18px 40px 30px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; font-size: 13px; color: rgba(236,233,255,0.42);">
+      <p style="margin: 0;">© 2026 Mira Advani</p>
+      <p style="margin: 0;">Built while learning React</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const POSTS = [
+  {
+    slug: "learning-in-public",
+    date: "Sep 14, 2026",
+    read: "6 min",
+    tag: "Habits",
+    title: "Learning in public, quietly",
+    excerpt: "Sharing work early is supposed to be terrifying. Mostly it is just slow, and that turns out to be the useful part.",
+    body: [
+      "For two years I kept a folder called drafts. Nothing left it. Every post needed one more pass, one more example, one more afternoon I never had. The folder grew to forty-one files and the blog stayed empty.",
+      "What broke the pattern was lowering the bar to something almost embarrassing: publish the note, not the essay. A note can be four paragraphs and one code block. It can end without a conclusion. It can be wrong, and someone will tell me, which is faster than being right alone.",
+      "The surprise was how little anyone cared about polish. The posts people wrote to me about were the ones where I showed the broken version first — the state that re-rendered eleven times, the effect that fired twice, the fix that took an hour to find and a line to write."
+    ],
+    quote: "Publish the note, not the essay.",
+    close: "So the rule now is simple. If I learned something on a Tuesday, it goes up by Thursday. The drafts folder still exists. It has three files in it, and that feels about right."
+  },
+  {
+    slug: "state-you-dont-need",
+    date: "Sep 2, 2026",
+    read: "8 min",
+    tag: "React",
+    title: "The state you don't need",
+    excerpt: "Half the bugs I write come from storing something I could have derived. A short tour of the ones that keep catching me.",
+    body: [
+      "Every piece of state is a promise to keep two things in sync. Store a list and its length, and you have signed up to update both, forever, in every branch. Derive the length instead and the promise disappears.",
+      "The version of this I hit most often is the filtered copy. You have items, you have a query, and it feels natural to keep filteredItems next to them. Now three things must agree. Compute the filtered list where you render it and there is only one source left to be wrong.",
+      "The second is the mirrored prop. A value arrives from above, you copy it into local state so you can edit it, and then the parent changes it and your copy quietly stops matching. Sometimes that is what you want. Usually it is a bug you will find in a week."
+    ],
+    quote: "Every piece of state is a promise to keep two things in sync.",
+    close: "The test I use before adding state: can I write this as a function of what I already have? If yes, write the function. It is fewer lines, and it cannot drift."
+  },
+  {
+    slug: "reading-error-messages",
+    date: "Aug 21, 2026",
+    read: "5 min",
+    tag: "Debugging",
+    title: "How to actually read an error message",
+    excerpt: "The stack trace is not punishment. It is the most specific documentation you will ever get about your own code.",
+    body: [
+      "I used to scan errors for a filename and start guessing. It works often enough to feel like a method, which is the worst kind of habit, because the times it fails are the times that cost you an afternoon.",
+      "The slower version: read the first line completely. Not the shape of it — the words. Then find the topmost frame that belongs to you rather than a library, because that is where your assumption and reality parted ways.",
+      "Then say the error out loud as a sentence about your code. Not 'cannot read properties of undefined' but 'the thing I assumed was an object was missing when this ran'. The translation is where the bug usually becomes obvious."
+    ],
+    quote: "The stack trace is documentation written specifically for you.",
+    close: "This takes ninety seconds and replaces most of my guessing. It is the highest-leverage habit I have picked up, and it required learning nothing new."
+  },
+  {
+    slug: "small-tools",
+    date: "Aug 7, 2026",
+    read: "4 min",
+    tag: "Tooling",
+    title: "In praise of small tools",
+    excerpt: "A forty-line script I wrote in an afternoon has saved me more time than every productivity app I have installed.",
+    body: [
+      "The script renames screenshots. That is all it does. It reads the folder, pulls the date out of each filename, and files them by month. It took an afternoon and I have run it maybe six hundred times.",
+      "Small tools win because they are shaped exactly like your problem. An app has to serve everyone, so it serves you approximately. A script serves only you, badly, in one direction, which is often all a problem needs.",
+      "They also stay understood. I can read all forty lines in a minute and change any of them without fear. That is not true of anything else in my toolchain."
+    ],
+    quote: "An app serves everyone, so it serves you approximately.",
+    close: "The cost of building one is usually lower than the cost of evaluating alternatives. I keep forgetting this, then remembering it in the middle of a comparison table."
+  },
+  {
+    slug: "rebuilding-things",
+    date: "Jul 25, 2026",
+    read: "7 min",
+    tag: "Learning",
+    title: "Rebuild the thing you already understand",
+    excerpt: "The fastest way I know to find the gaps in your knowledge is to write something you are sure you could write.",
+    body: [
+      "I thought I understood routing. I had used it for years. Then I sat down to build a tiny router — match a path, render a component — and found four separate things I had been taking on faith.",
+      "That is the whole trick. Pick something you use daily and consider solved, then implement the smallest honest version of it. Not to replace the real one. To find out which parts you were only pattern-matching.",
+      "It is uncomfortable in a specific way, because you expected the exercise to be easy and it is not. That discomfort is the signal. Easy rebuilds teach you nothing; you already knew that part."
+    ],
+    quote: "Easy rebuilds teach you nothing; you already knew that part.",
+    close: "I try to do one every couple of months. A router, a form library, a state store, a diffing loop. None of them survive past the afternoon, and all of them change how I read the real thing afterwards."
+  }
+];
+
+class Component extends DCLogic {
+  state = { route: "home", slug: POSTS[0].slug, name: "", email: "", message: "", sent: false };
+
+  go = (route) => (e) => { if (e) e.preventDefault(); this.setState({ route }); window.scrollTo(0, 0); };
+
+  openPost = (slug) => (e) => { if (e) e.preventDefault(); this.setState({ route: "post", slug }); window.scrollTo(0, 0); };
+
+  active(route) {
+    return this.state.route === route || (route === "list" && this.state.route === "post");
+  }
+
+  decorate(list) {
+    return list.map((p) => ({ ...p, open: this.openPost(p.slug) }));
+  }
+
+  renderVals() {
+    const { route, slug, name, email, message, sent } = this.state;
+    const idx = Math.max(0, POSTS.findIndex((p) => p.slug === slug));
+    const post = POSTS[idx];
+    const others = POSTS.filter((p, i) => i !== idx).slice(0, 2);
+    const dim = "rgba(236,233,255,0.6)";
+    const pill = "rgba(255,255,255,0.07)";
+    return {
+      isHome: route === "home",
+      isList: route === "list",
+      isPost: route === "post",
+      isAbout: route === "about",
+      isContact: route === "contact",
+      goHome: this.go("home"),
+      goList: this.go("list"),
+      goAbout: this.go("about"),
+      goContact: this.go("contact"),
+      homeColor: this.active("home") ? "#ECE9FF" : dim,
+      listColor: this.active("list") ? "#ECE9FF" : dim,
+      aboutColor: this.active("about") ? "#ECE9FF" : dim,
+      homeBg: this.active("home") ? pill : "transparent",
+      listBg: this.active("list") ? pill : "transparent",
+      aboutBg: this.active("about") ? pill : "transparent",
+      posts: this.decorate(POSTS),
+      featured: this.decorate(POSTS.slice(1, 4)),
+      lead: this.decorate([POSTS[0]])[0],
+      nextUp: this.decorate(others),
+      count: POSTS.length,
+      current: { ...post, lede: post.body[0], rest: post.body.slice(1) },
+      name, email, message,
+      sent, notSent: !sent,
+      setName: (e) => this.setState({ name: e.target.value }),
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      setMessage: (e) => this.setState({ message: e.target.value }),
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: (e) => { e.preventDefault(); this.setState({ sent: false, name: "", email: "", message: "" }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
